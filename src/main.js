@@ -26,7 +26,7 @@ async function renderProducts() {
 function listenViewProduct() {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
-        button.addEventListener("click", (e) => {
+        button.addEventListener("click", () => {
             console.log(index);
         })
     });
@@ -41,10 +41,10 @@ function createSingleProduct(data, index) {
             </div>
         </div>
     `;
-} 
+}
 
 function createProduct(item) {
-    return  `
+    return `
     <div class="product-container">
             <h2 class="product-title">${item.title}</h2>
             <img class="product-img" src="${item.image}" alt="product image">
