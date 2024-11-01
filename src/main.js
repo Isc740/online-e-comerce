@@ -2,9 +2,13 @@ let cachedData;
 
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
-})
+});
 
 async function fetchItems() {
+    if (cachedData) {
+        return cachedData;
+    }
+
     try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
@@ -17,7 +21,7 @@ async function fetchItems() {
 async function renderProducts() {
     cachedData = await fetchItems();
     let elements = "";
-    cachedData.map(item => elements += createProduct(item));
+    cachedData.map((item) => elements += createProduct(item));
     document.querySelector(".product-section").innerHTML += elements;
 
     listenViewProduct();
@@ -27,20 +31,9 @@ function listenViewProduct() {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            console.log(index);
-        })
+            createSingleProduct(cachedData, index);
+        });
     });
-}
-
-function createSingleProduct(data, index) {
-    document.geti
-    createProduct(data[index]);
-    document.querySelector(".product-section") += `
-            <div class="center-container">
-                <button class="return-btn" onclick="fetchItems()">Return</button>
-            </div>
-        </div>
-    `;
 }
 
 function createProduct(item) {
@@ -57,5 +50,5 @@ function createProduct(item) {
             <p class="p-rate">Amount bought:<strong>${item.rating.count}</strong></p>
             <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
         </div>
-    `
+    `;
 }

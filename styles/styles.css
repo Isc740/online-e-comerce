@@ -11,7 +11,7 @@
 }
 
 .bg-color-1 {
-  background-color: #003135;
+  background-color: #0c0c1d;
 }
 
 .section {
@@ -44,7 +44,7 @@
   max-width: 350px;
   height: auto;
   padding: 10px 15px;
-  border: 6px solid #003135;
+  border: 6px solid #0C0C1D;
   border-radius: 10px;
 }
 
@@ -55,6 +55,13 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
+}
+
+.center-container {
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
