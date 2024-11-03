@@ -5,13 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 let productData;
 
 async function fetchItems() {
-    if (productData) {
-        return productData;
+    if (sessionStorage.getItem("productData")) {
+        return JSON.parse(sessionStorage.getItem("productData"));
     }
 
     try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
+
+        sessionStorage.setItem("productData", JSON.stringify(data));
+
         return data;
     } catch (error) {
         console.log(error);
@@ -20,10 +23,10 @@ async function fetchItems() {
 
 async function renderProducts() {
     productData = await fetchItems();
-    console.log(productData);
     let elements = "";
     productData.map((item) => elements += createProduct(item));
     document.querySelector(".product-section").innerHTML += elements;
+
     listenViewProduct();
 }
 
@@ -32,7 +35,6 @@ function listenViewProduct() {
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
             sessionStorage.setItem("productIndex", index);
-            sessionStorage.setItem("productData", productData);
             globalThis.location.href = "../views/single-product.html";
         });
     });

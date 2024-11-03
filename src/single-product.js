@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const productData = sessionStorage.getItem("productData");
-    const productIndex = sessionStorage.getItem("productIndex");
+    const productData = JSON.parse(sessionStorage.getItem("productData"));
+    const productIndex = Number.parseInt(
+        sessionStorage.getItem("productIndex"),
+    );
+
     document.querySelector(".section").innerHTML += `
         <div class="product-container">
             <h2 class="product-title">${productData[productIndex].title}</h2>
