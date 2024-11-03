@@ -1,12 +1,12 @@
-let cachedData;
-
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
 });
 
+let productData;
+
 async function fetchItems() {
-    if (cachedData) {
-        return cachedData;
+    if (productData) {
+        return productData;
     }
 
     try {
@@ -19,11 +19,11 @@ async function fetchItems() {
 }
 
 async function renderProducts() {
-    cachedData = await fetchItems();
+    productData = await fetchItems();
+    console.log(productData);
     let elements = "";
-    cachedData.map((item) => elements += createProduct(item));
+    productData.map((item) => elements += createProduct(item));
     document.querySelector(".product-section").innerHTML += elements;
-
     listenViewProduct();
 }
 
@@ -31,7 +31,9 @@ function listenViewProduct() {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            createSingleProduct(cachedData, index);
+            sessionStorage.setItem("productIndex", index);
+            sessionStorage.setItem("productData", productData);
+            globalThis.location.href = "../views/single-product.html";
         });
     });
 }
