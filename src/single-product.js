@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const productData = JSON.parse(sessionStorage.getItem("productData"));
+    const productData = JSON.parse(localStorage.getItem("productData"));
     const productIndex = Number.parseInt(
-        sessionStorage.getItem("productIndex"),
+        localStorage.getItem("productIndex"),
     );
+    displaySingleProduct(productData, productIndex);
+});
 
-    document.querySelector(".single-product").innerHTML += `
+const displaySingleProduct = (productData, productIndex) => {
+    document.querySelector(".single-product").innerHTML = `
         <div class="product-container">
             <h2 class="product-title">${productData[productIndex].title}</h2>
             <img class="product-img" src="${productData[productIndex].image
@@ -25,4 +28,4 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     `;
-});
+};
