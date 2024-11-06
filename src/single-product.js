@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <img class="product-img" src="${productData[productIndex].image
         }" alt="product image">
             <div class="center-container">
-                <button class="btn-buy">Buy</button>
+                <button class="btn btn-green btn-add-cart">Add to cart</button>
             </div>
             <p>Codigo: <strong>${productData[productIndex].id}</strong></p>
             <p class="product-desc">${productData[productIndex].description}</p>
@@ -20,9 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }</strong></p>
             <p class="p-rate">Price<strong class="product-price">$${productData[productIndex].price
         }</strong></p>
-            
             <div class="center-container">
-                <button class="return-btn" onclick="fetchItems()">Return</button>
+                <button class="btn btn-black return-btn" onclick="globalThis.location.href='../index.html'">Return</button>
             </div>
         </div>
     `;

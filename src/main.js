@@ -1,36 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-    renderProducts();
+let productData;
+document.addEventListener("DOMContentLoaded", async () => {
+    await renderProducts();
+    listenViewProductBtn();
 });
 
-let productData;
+const renderProducts = async () => {
+    productData = await fetchItems();
+    let elements = "";
+    productData.map((item) => elements += createProduct(item));
+    document.querySelector(".product-section").innerHTML += elements;
+};
 
-async function fetchItems() {
+const fetchItems = async () => {
     if (sessionStorage.getItem("productData")) {
         return JSON.parse(sessionStorage.getItem("productData"));
     }
-
     try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
 
         sessionStorage.setItem("productData", JSON.stringify(data));
-
         return data;
     } catch (error) {
         console.log(error);
     }
-}
+};
 
-async function renderProducts() {
-    productData = await fetchItems();
-    let elements = "";
-    productData.map((item) => elements += createProduct(item));
-    document.querySelector(".product-section").innerHTML += elements;
-
-    listenViewProduct();
-}
-
-function listenViewProduct() {
+const listenViewProductBtn = () => {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
@@ -38,9 +34,9 @@ function listenViewProduct() {
             globalThis.location.href = "../views/single-product.html";
         });
     });
-}
+};
 
-function createProduct(item) {
+const createProduct = (item) => {
     return `
     <div class="product-container">
             <h2 class="product-title">${item.title}</h2>
@@ -55,4 +51,4 @@ function createProduct(item) {
             <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
         </div>
     `;
-}
+};
