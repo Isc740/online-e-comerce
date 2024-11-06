@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const renderProducts = async () => {
     productData = await fetchItems();
-    let elements = "";
-    productData.map((item) => elements += createProduct(item));
-    document.querySelector(".product-section").innerHTML += elements;
+    document.querySelector(".product-section").innerHTML = productData.map(
+        createProduct,
+    ).join("");
 };
 
 const fetchItems = async () => {
@@ -36,19 +36,17 @@ const listenViewProductBtn = () => {
     });
 };
 
-const createProduct = (item) => {
-    return `
+const createProduct = (item) => `
     <div class="product-container">
-            <h2 class="product-title">${item.title}</h2>
-            <img class="product-img" src="${item.image}" alt="product image">
-            <div class="center-container">
-                <button class="product-btn">View Product</button>
-            </div>
-            <p>Codigo: <strong>${item.id}</strong></p>
-            <p class="product-desc">${item.description}</p>
-            <p class="p-rate">Rating:<strong>${item.rating.rate}</strong></p>
-            <p class="p-rate">Amount bought:<strong>${item.rating.count}</strong></p>
-            <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
+        <h2 class="product-title">${item.title}</h2>
+        <img class="product-img" src="${item.image}" alt="product image">
+        <div class="center-container">
+            <button class="product-btn">View Product</button>
         </div>
+        <p>Codigo: <strong>${item.id}</strong></p>
+        <p class="product-desc">${item.description}</p>
+        <p class="p-rate">Rating:<strong>${item.rating.rate}</strong></p>
+        <p class="p-rate">Amount bought:<strong>${item.rating.count}</strong></p>
+        <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
+    </div>
     `;
-};
