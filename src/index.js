@@ -27,7 +27,7 @@ const listenViewProductBtn = () => {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            localStorage.setItem("productIndex", index);
+            sessionStorage.setItem("productIndex", index);
             globalThis.location.href = "../views/single-product.html";
         });
     });
@@ -45,5 +45,4 @@ const createProduct = (item) => `
         <p class="p-rate">Rating:<strong>${item.rating.rate}</strong></p>
         <p class="p-rate">Amount bought:<strong>${item.rating.count}</strong></p>
         <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
-    </div>
-    `;
+    </div>`;
