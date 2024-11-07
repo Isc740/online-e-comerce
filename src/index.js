@@ -27,7 +27,8 @@ const listenViewProductBtn = () => {
     buttons = document.querySelectorAll(".product-btn");
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
-            sessionStorage.setItem("productIndex", index);
+            console.log(sessionStorage.getItem("productIndex"));
+            sessionStorage.setItem("productIndex", index + 1);
             globalThis.location.href = "../views/single-product.html";
         });
     });

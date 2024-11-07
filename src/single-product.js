@@ -11,7 +11,7 @@ const listenCartBtn = (productIndex) => {
     document.querySelector(".btn-add-cart").addEventListener("click", () => {
         const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
         if (!(productIndex in cartItems)) {
-            cartItems[productIndex + 1] = productIndex + 1;
+            cartItems[productIndex] = productIndex;
         }
 
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -19,6 +19,7 @@ const listenCartBtn = (productIndex) => {
 };
 
 const displaySingleProduct = (productData, productIndex) => {
+    productIndex--;
     document.querySelector(".single-product").innerHTML = `
         <div class="product-container">
             <h2 class="product-title">${productData[productIndex].title}</h2>
