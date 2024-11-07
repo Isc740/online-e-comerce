@@ -29,7 +29,7 @@ const listenViewProductBtn = () => {
         button.addEventListener("click", () => {
             console.log(sessionStorage.getItem("productIndex"));
             sessionStorage.setItem("productIndex", index + 1);
-            globalThis.location.href = "views/single-product.html";
+            globalThis.location.href = "../views/single-product.html";
         });
     });
 };
