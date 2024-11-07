@@ -7,24 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     listenCartBtn(productIndex);
 });
 
-const listenCartBtn = (productIndex) => {
-    document.querySelector(".btn-add-cart").addEventListener("click", () => {
-        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
-        if (!(productIndex in cartItems)) {
-            cartItems[productIndex] = productIndex;
-            alert("Se añadió el objeto al carrito!");
-        } else {
-            alert("El producto ya se encuentra en su carrito.");
-        }
-
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    });
-};
-
 const displaySingleProduct = (productData, productIndex) => {
     productIndex--;
     document.querySelector(".single-product").innerHTML = `
-        <div class="product-container single">
+        <div class="product-container single bg-color-2">
             <h2 class="product-title">${productData[productIndex].title}</h2>
             <div class="img-container">
             <img class="product-img" src="${productData[productIndex].image
@@ -46,4 +32,28 @@ const displaySingleProduct = (productData, productIndex) => {
             </div>
         </div>
     `;
+};
+
+const listenCartBtn = (productIndex) => {
+    document.querySelector(".btn-add-cart").addEventListener("click", () => {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
+        if (!(productIndex in cartItems)) {
+            cartItems[productIndex] = productIndex;
+            Swal.fire({
+                title: 'Added Product!',
+                text: 'The product has been added to the cart!',
+                icon: 'success',
+                confirmButtonText: 'Return'
+              })
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'The product is on the cart!',
+                icon: 'error',
+                confirmButtonText: 'Return'
+              })
+        }
+
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    });
 };
