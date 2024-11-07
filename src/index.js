@@ -29,7 +29,8 @@ const listenViewProductBtn = () => {
         button.addEventListener("click", () => {
             console.log(sessionStorage.getItem("productIndex"));
             sessionStorage.setItem("productIndex", index + 1);
-            globalThis.location.href = "../views/single-product.html";
+            globalThis.location.href =
+                "online-e-comerce/views/single-product.html";
         });
     });
 };

@@ -42,7 +42,7 @@ const displaySingleProduct = (productData, productIndex) => {
             <p class="p-rate">Price<strong class="product-price">$${productData[productIndex].price
         }</strong></p>
             <div class="center-container">
-                <button class="btn btn-black return-btn" onclick="globalThis.location.href='../index.html'">Return</button>
+                <button class="btn btn-black return-btn" onclick="globalThis.location.href='online-e-comerce/index.html'">Return</button>
             </div>
         </div>
     `;
