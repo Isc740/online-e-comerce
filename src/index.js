@@ -18,9 +18,7 @@ const fetchItems = async () => {
 
 const renderProducts = async () => {
     productData = await fetchItems();
-    document.querySelector(".product-section").innerHTML = productData.map(
-        createProduct,
-    ).join("");
+    document.querySelector(".product-section").innerHTML = productData.map(createProduct).join("");
 };
 
 const listenViewProductBtn = () => {
@@ -28,19 +26,19 @@ const listenViewProductBtn = () => {
     buttons.forEach((button, index) => {
         button.addEventListener("click", () => {
             sessionStorage.setItem("productIndex", index + 1);
-            globalThis.location.href = "../views/single-product.html";
+            globalThis.location.href = "./views/single-product.html";
         });
     });
 };
 
 const createProduct = (item) => `
     <div class="product-container bg-color-2">
-        <h2 class="product-title">${item.title}</h2>
+        <h4 class="product-title">${item.title}</h2>
         <div class="img-container">
             <img class="product-img" src="${item.image}" alt="product image">
         </div>
         <div class="center-container">
-            <button class="btn product-btn">View Product</button>
+            <button class="btn btn-primary product-btn">View Product</button>
         </div>
         <p>Codigo: <strong>${item.id}</strong></p>
         <p class="product-desc">${item.description}</p>

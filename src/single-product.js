@@ -17,7 +17,7 @@ const displaySingleProduct = (productData, productIndex) => {
         }" alt="product image">
             </div>
             <div class="center-container">
-                <button class="btn btn-green btn-add-cart">Add to cart</button>
+                <button class="btn btn-success btn-add-cart">Add to cart</button>
             </div>
             <p>Codigo: <strong>${productData[productIndex].id}</strong></p>
             <p class="product-desc">${productData[productIndex].description}</p>
@@ -28,7 +28,7 @@ const displaySingleProduct = (productData, productIndex) => {
             <p class="p-rate">Price<strong class="product-price">$${productData[productIndex].price
         }</strong></p>
             <div class="center-container">
-                <button class="btn btn-black return-btn" onclick="globalThis.location.href='../index.html'">Return</button>
+                <button type="button" class="btn btn-dark return-btn" onclick="globalThis.location.href='../index.html'">Return</button>
             </div>
         </div>
     `;

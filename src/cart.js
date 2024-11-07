@@ -51,11 +51,11 @@ const createCartProduct = (product) => `
         <div class="cart-product-container">
             <div class="cart-product-left">
                 <img class="product-img cart-img" src="${product.image}" alt="product image">
-                <h2 class="product-title">${product.title}</h2>
+                <h4 class="product-title">${product.title}</h2>
             </div>
             <div class="cart-product-left cart-product-div">
-                <h3 class="p-rate">Price:<br> <strong class="product-price">$${product.price}</strong></h3>
-                <button class="btn btn-red btn-remove-cart" data-product-id="${product.id}">Remove</button>
+                <h5 class="p-rate">Price:<br> <strong class="product-price">$${product.price}</strong></h3>
+                <button class="btn btn-danger btn-remove-cart" data-product-id="${product.id}">Remove</button>
             </div>
         </div>
     `;
