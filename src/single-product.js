@@ -9,17 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const listenCartBtn = (productIndex) => {
     document.querySelector(".btn-add-cart").addEventListener("click", () => {
-        if (!localStorage.getItem("cartItems")) {
-            localStorage.setItem("cartItems", JSON.stringify({}));
+        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
+        if (!(productIndex in cartItems)) {
+            cartItems[productIndex + 1] = productIndex + 1;
         }
 
-        cartItems = JSON.parse(localStorage.getItem("cartItems"));
-        console.log(cartItems);
-        if (!(productIndex in cartItems)) {
-            cartItems[productIndex] = productIndex;
-        } else {
-            console.log("se repite");
-        }
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     });
 };
