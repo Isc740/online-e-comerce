@@ -37,10 +37,10 @@ const listenRemoveCartItem = (productData, cartItems) => {
 };
 
 const createCartProduct = (product) => `
-        <div class="cart-product-container">
-            <img class="product-img" src="${product.image}" alt="product image">
+        <div class="cart-product-container ">
+            <img class="product-img cart-img" src="${product.image}" alt="product image">
             <h2 class="product-title">${product.title}</h2>
-            <p class="p-rate">Price<strong class="product-price">$${product.price}</strong></p>
+            <p class="p-rate">Price: <strong class="product-price"> $${product.price}</strong></p>
             <div class="center-container">
                 <button class="btn btn-red btn-remove-cart" data-product-id="${product.id}">Remove</button>
             </div>

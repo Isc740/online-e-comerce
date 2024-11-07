@@ -35,11 +35,13 @@ const listenViewProductBtn = () => {
 };
 
 const createProduct = (item) => `
-    <div class="product-container">
+    <div class="product-container bg-color-2">
         <h2 class="product-title">${item.title}</h2>
-        <img class="product-img" src="${item.image}" alt="product image">
+        <div class="img-container">
+            <img class="product-img" src="${item.image}" alt="product image">
+        </div>
         <div class="center-container">
-            <button class="product-btn">View Product</button>
+            <button class="btn product-btn">View Product</button>
         </div>
         <p>Codigo: <strong>${item.id}</strong></p>
         <p class="product-desc">${item.description}</p>

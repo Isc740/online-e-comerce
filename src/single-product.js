@@ -12,6 +12,9 @@ const listenCartBtn = (productIndex) => {
         const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
         if (!(productIndex in cartItems)) {
             cartItems[productIndex] = productIndex;
+            alert("Se añadió el objeto al carrito!");
+        } else {
+            alert("El producto ya se encuentra en su carrito.");
         }
 
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -21,10 +24,12 @@ const listenCartBtn = (productIndex) => {
 const displaySingleProduct = (productData, productIndex) => {
     productIndex--;
     document.querySelector(".single-product").innerHTML = `
-        <div class="product-container">
+        <div class="product-container single">
             <h2 class="product-title">${productData[productIndex].title}</h2>
+            <div class="img-container">
             <img class="product-img" src="${productData[productIndex].image
         }" alt="product image">
+            </div>
             <div class="center-container">
                 <button class="btn btn-green btn-add-cart">Add to cart</button>
             </div>
