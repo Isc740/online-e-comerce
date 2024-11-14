@@ -21,10 +21,10 @@ const displaySingleProduct = (productData, productIndex) => {
 							<a class="btn btn-success btn-add-cart">add to cart</a>
 						</div>
 					</div>
-					<ul class="list-group list-group-flush">
+					<ul class="list-group list-group-flush text-center">
 						<li class="list-group-item text-body-secondary">Rating: ${productData[productIndex].rating.rate}</li>
 						<li class="list-group-item text-body-secondary">Amount Bought: ${productData[productIndex].rating.count}</li>
-						<li class="list-group-item text-body-secondary">Price: ${productData[productIndex].price}</li>
+						<li class="list-group-item text-success">Price: <strong>${productData[productIndex].price}</strong></li>
 					</ul>
 				</div>
 			</div>

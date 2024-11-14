@@ -44,7 +44,7 @@ const createProduct = (item) => `
       <a class="btn btn-primary product-btn">View product</a>
     </div>
   </div>
-  <ul class="list-group list-group-flush">
+  <ul class="list-group list-group-flush text-center">
     <li class="list-group-item text-body-secondary">Rating: ${item.rating.rate}</li>
     <li class="list-group-item text-body-secondary">Amount Bought: ${item.rating.count}</li>
     <li class="list-group-item text-success">Price: <strong>${item.price}</strong></li>
