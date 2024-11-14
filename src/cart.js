@@ -1,50 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
-  productData = JSON.parse(localStorage.getItem("productData"));
-  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
+	productData = JSON.parse(localStorage.getItem("productData"));
+	const cartItems = JSON.parse(localStorage.getItem("cartItems") || "{}");
 
-  if (Object.keys(cartItems).length === 0) {
-    return;
-  }
+	if (Object.keys(cartItems).length === 0) {
+		return;
+	}
 
-  renderCartProducts(productData, cartItems);
-  listenRemoveCartItem(productData, cartItems);
+	renderCartProducts(productData, cartItems);
+	listenRemoveCartItem(productData, cartItems);
 });
 
 const renderCartProducts = (productData, cartItems) => {
-  const cartProducts = productData.filter((product) => product.id in cartItems);
+	const cartProducts = productData.filter((product) => product.id in cartItems);
 
-  document.querySelector(".cart-container").innerHTML = cartProducts
-    .map((product) => createCartProduct(product))
-    .join("");
+	document.querySelector(".cart-container").innerHTML = cartProducts
+		.map((product) => createCartProduct(product))
+		.join("");
 };
 
 const listenRemoveCartItem = (productData, cartItems) => {
-  document.querySelector(".cart-container").addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-remove-cart")) {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-        const productId = e.target.dataset.productId;
-        delete cartItems[productId];
+	document.querySelector(".cart-container").addEventListener("click", (e) => {
+		if (e.target.classList.contains("btn-remove-cart")) {
+			Swal.fire({
+				title: "Are you sure?",
+				text: "You won't be able to revert this!",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Yes, delete it!",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					const productId = e.target.dataset.productId;
+					delete cartItems[productId];
 
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
-        }
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
-        renderCartProducts(productData, cartItems);
-      });
-    }
-  });
+					Swal.fire({
+						title: "Deleted!",
+						text: "Your file has been deleted.",
+						icon: "success",
+					});
+				}
+				localStorage.setItem("cartItems", JSON.stringify(cartItems));
+				renderCartProducts(productData, cartItems);
+			});
+		}
+	});
 };
 
 const createCartProduct = (product) => `
