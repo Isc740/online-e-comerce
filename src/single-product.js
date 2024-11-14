@@ -8,24 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
 const displaySingleProduct = (productData, productIndex) => {
 	productIndex--;
 	document.querySelector(".single-product").innerHTML = `
-        <div class="product-container single bg-color-2">
-            <h2 class="product-title">${productData[productIndex].title}</h2>
-            <div class="img-container">
-            <img class="product-img" src="${productData[productIndex].image}" alt="product image">
-            </div>
-            <div class="center-container">
-                <button class="btn btn-success btn-add-cart">Add to cart</button>
-            </div>
-            <p>Codigo: <strong>${productData[productIndex].id}</strong></p>
-            <p class="product-desc">${productData[productIndex].description}</p>
-            <p class="p-rate">Rating:<strong>${productData[productIndex].rating.rate}</strong></p>
-            <p class="product-amount p-rate">Amount bought:<strong>${productData[productIndex].rating.count}</strong></p>
-            <p class="p-rate">Price<strong class="product-price">$${productData[productIndex].price}</strong></p>
-            <div class="center-container">
-                <button type="button" class="btn btn-dark return-btn" onclick="globalThis.location.href='../index.html'">Return</button>
-            </div>
-        </div>
-    `;
+		<div class="card mb-3" style="width: 40rem;">
+			<div class="row g-0">
+				<div class="col-md-5 p-2">
+					<img src="${productData[productIndex].image}" class="img-fluid card-img-top mx-auto my-4 rounded-start" alt="product image">
+				</div>
+				<div class="col-md-7 border">
+					<div class="card-body">
+						<h5 class="card-title">${productData[productIndex].title}</h5>
+						<p class="card-text">${productData[productIndex].description}</p>
+						<div class="justify-content-center d-flex">
+							<a class="btn btn-success btn-add-cart">add to cart</a>
+						</div>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-body-secondary">Rating: ${productData[productIndex].rating.rate}</li>
+						<li class="list-group-item text-body-secondary">Amount Bought: ${productData[productIndex].rating.count}</li>
+						<li class="list-group-item text-body-secondary">Price: ${productData[productIndex].price}</li>
+					</ul>
+				</div>
+			</div>
+		</div>`;
 };
 
 const listenCartBtn = (productIndex) => {
