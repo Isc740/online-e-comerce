@@ -32,7 +32,7 @@ const listenViewProductBtn = () => {
 };
 
 const createProduct = (item) => `
-    <div class="product-container bg-color-2">
+    <div class="product-container bg-light">
         <h4 class="product-title">${item.title}</h2>
         <div class="img-container">
             <img class="product-img" src="${item.image}" alt="product image">
