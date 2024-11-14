@@ -37,12 +37,12 @@ const listenRemoveCartItem = (productData, cartItems) => {
 		if (e.target.classList.contains("btn-remove-cart")) {
 			Swal.fire({
 				title: "Are you sure?",
-				text: "You won't be able to revert this!",
+				text: "The product will be removed from the cart!",
 				icon: "warning",
 				showCancelButton: true,
 				confirmButtonColor: "#3085d6",
 				cancelButtonColor: "#d33",
-				confirmButtonText: "Yes, delete it!",
+				confirmButtonText: "Yes, remove it!",
 			}).then((result) => {
 				if (result.isConfirmed) {
 					const productId = e.target.dataset.productId;
@@ -50,7 +50,7 @@ const listenRemoveCartItem = (productData, cartItems) => {
 
 					Swal.fire({
 						title: "Deleted!",
-						text: "Your file has been deleted.",
+						text: "Your product has been removed.",
 						icon: "success",
 					});
 				}
