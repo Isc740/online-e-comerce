@@ -13,13 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
 const renderCartProducts = (productData, cartItems) => {
 	const cartProducts = productData.filter((product) => product.id in cartItems);
 
-	document.querySelector(".cart-container").innerHTML = cartProducts
-		.map((product) => createCartProduct(product))
-		.join("");
+	const tableBody = document.querySelector(".cart-table-body");
+	tableBody.innerHTML = "";
+
+	cartProducts.forEach((product) => {
+		const row = document.createElement("tr");
+		row.innerHTML = `
+            <th scope="row"><img src="${product.image}" class="cart-product-img" alt="product image" width="50"></th>
+            <td>${product.title}</td>
+            <td>$${product.price}</td>
+            <td class=""><button class="btn btn-danger btn-remove-cart" data-product-id="${product.id}">Remove</button></td>
+        `;
+		tableBody.appendChild(row);
+	});
+
+	//document.querySelector(".cart-container").innerHTML = cartProducts
+	//	.map((product) => createCartProduct(product))
+	//	.join("");
 };
 
 const listenRemoveCartItem = (productData, cartItems) => {
-	document.querySelector(".cart-container").addEventListener("click", (e) => {
+	document.querySelector(".cart-table-body").addEventListener("click", (e) => {
 		if (e.target.classList.contains("btn-remove-cart")) {
 			Swal.fire({
 				title: "Are you sure?",

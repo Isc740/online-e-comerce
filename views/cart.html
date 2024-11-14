@@ -19,17 +19,30 @@
     ></script>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-light bg-light border shadow-sm fixed-top"
-    >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="/index.html">Online E-Commerce</a>
-
         <div class="d-flex ms-auto">
           <a class="nav-link" href="/views/cart.html">Cart</a>
         </div>
       </div>
-    <div class="section cart-container"></div>
+    </nav>
+
+    <div class="container">
+      <h1 class="text-center my-5">Your Cart</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="cart-table-body"></tbody>
+      </table>
+    </div>
+    <div class="container cart-container"></div>
     <script src="../src/cart.js"></script>
   </body>
 </html>
