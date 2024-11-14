@@ -33,17 +33,21 @@ const listenViewProductBtn = () => {
 };
 
 const createProduct = (item) => `
-    <div class="product-container bg-light">
-        <h4 class="product-title">${item.title}</h2>
-        <div class="img-container">
-            <img class="product-img" src="${item.image}" alt="product image">
-        </div>
-        <div class="center-container">
-            <button class="btn btn-primary product-btn">View Product</button>
-        </div>
-        <p>Codigo: <strong>${item.id}</strong></p>
-        <p class="product-desc">${item.description}</p>
-        <p class="p-rate">Rating:<strong>${item.rating.rate}</strong></p>
-        <p class="p-rate">Amount bought:<strong>${item.rating.count}</strong></p>
-        <p class="p-rate">Price:<strong class="product-price">$${item.price}</strong></p>
-    </div>`;
+<div class="card" style="width: 22rem;">
+  <div class="fluid">
+    <img src="${item.image}" class="product-img card-img-top mx-auto my-4" alt="product image">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">${item.title}</h5>
+    <p class="card-text">${item.description}</p>
+    <div class="justify-content-center d-flex">
+      <a class="btn btn-primary product-btn">View product</a>
+    </div>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-body-secondary">Rating: ${item.rating.rate}</li>
+    <li class="list-group-item text-body-secondary">Amount Bought: ${item.rating.count}</li>
+    <li class="list-group-item text-body-secondary">Price: ${item.price}</li>
+  </ul>
+
+</div>`;
