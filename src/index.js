@@ -37,7 +37,7 @@ const createProduct = (item) => `
   <div class="fluid">
     <img src="${item.image}" class="product-img card-img-top mx-auto my-4" alt="product image">
   </div>
-  <div class="card-body">
+  <div class="card-body shadow-sm">
     <h5 class="card-title">${item.title}</h5>
     <p class="card-text">${item.description}</p>
     <div class="justify-content-center d-flex">

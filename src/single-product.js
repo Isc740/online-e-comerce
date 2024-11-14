@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const displaySingleProduct = (productData, productIndex) => {
 	productIndex--;
 	document.querySelector(".single-product").innerHTML = `
-		<div class="card mb-3" style="width: 40rem;">
+		<div class="card mb-3 shadow" style="width: 40rem;">
 			<div class="row g-0">
 				<div class="col-md-5 p-2">
 					<img src="${productData[productIndex].image}" class="img-fluid card-img-top mx-auto my-4 rounded-start" alt="product image">
